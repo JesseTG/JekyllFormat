@@ -1,0 +1,150 @@
+---
+array: [1, 2, 3, "oops"]
+dict: { paul => "mccartney", monty => "python" }
+---
+
+<html>
+<body>
+<h1>jekyll-format tests</h1>
+
+<h2>Basics</h2>
+
+<p>
+<b>Bare minimum:</b> <samp>{{ "%s" | format: "Success!" }}</samp>
+</p>
+
+<p>
+<b>No arguments:</b> <samp>{{ "Success!" | format }}</samp>
+</p>
+
+<p>
+<b>Relative positioning:</b> <samp>{{ "%d, %d, %d, %d" | format: 1, 2, 3, 4}}</samp>
+<p>
+
+<p>
+<b>Absolute positioning:</b> <samp>{{ "%4$d, %3$d, %2$d, %1$d" | format: 1, 2, 3, 4 }}</samp>
+</p>
+
+<p>
+<b>Too many arguments (given 4, need 2):</b> <samp>{{ "%d, %d" | format: 1, 2, 3, 4 }}</samp>
+</p>
+
+<p>
+<b>Too few arguments (given 2, need 4):</b> <samp>{{ "%d, %d, %d, %d" | format: 1, 2 }}</samp>
+</p>
+
+<hr/>
+
+<h2>Integers</h2>
+
+
+<p>
+<b>Binary numbers: </b> <samp>{{ "%1$d -> %1$b, %2$d -> %2$b" | format: 5, -32 }}</samp>
+</p>
+
+<p>
+<b>Decimal numbers: </b> <samp>{{ "%d, %i, %u" | format: 000, 105, -6 }}</samp>
+</p>
+
+<p>
+<b>Octal numbers: </b> <samp>{{ "%o, %o" | format: 29, -82 }}</samp>
+</p>
+
+<p>
+<b>Hexadecimal numbers (lowercase): </b> <samp>{{ "%x, %x" | format: 43455, -1756505 }}</samp>
+</p>
+
+<p>
+<b>Hexadecimal numbers (uppercase): </b> <samp>{{ "%X, %X" | format: 73452, -287823 }}</samp>
+</p>
+
+<hr/>
+<h2>Floats</h2>
+
+<p>
+<b>Truncation of floats: </b> <samp>{{ "%d, %i, %u" | format: 3542.6, 3.14159, -345.548303}}</samp>
+</p>
+
+<p>
+<b>Standard representation: </b> <samp>{{ "%f, %f, %f" | format: 1.7, -43.25, 0.0421 }}</samp>
+</p>
+
+<p>
+<b>Scientific notation (lowercase): </b> <samp>{{ "%e, %e, %e" | format: 1.324, -47.42342, 0.00000053422 }}</samp>
+</p>
+
+<p>
+<b>Scientific notation (uppercase):</b> <samp>{{ "%E, %E, %E" | format: 1.423245, -0.000002342153, 55345.677745 }}</samp>
+</p>
+
+<p>
+<b>Scientific notation (adaptive): </b> <samp>{{ "%g, %g, %g" | format: 1.5436, -1.0000034532, -43534566.00034595939 }}</samp>
+</b>
+
+<p>
+<b>Scientific notation (adaptive uppercase): </b> <samp>{{ "%G, %G, %G" | format: 1.5436, -1.0000034532, -46369996.00034595939 }}</samp>
+</b>
+
+<p>
+<b>Scientific notation (hexadecimal): </b> <samp>{{ "%a, %a, %a" | format: 1.5436, -1.0000034532, -369996.00034595939 }}</samp>
+</b>
+
+<p>
+<b>Scientific notation (hexadecimal uppercase): </b> <samp>{{ "%A, %A, %A" | format: 1.5436, -1.0000034532, -56369996.00034595939 }}</samp>
+</b>
+
+<hr/>
+
+<h2>Text</h2>
+
+<p>
+<b>Percent Sign:</b> <samp>{{ "%% %% %%" | format }}</samp>
+</p>
+
+<p>
+<b>Single characters (numeric codes):</b> <samp>{{ "%c %c %c" | format:78, 102, 88 }}</samp>
+</p>
+
+<p>
+<b>Single characters (strings):</b> <samp>{{ "%c %c %c" | format: 't', 'j', '7' }}</samp>
+</p>
+
+<p>
+<b>Strings:</b> <samp>{{ "%s %s %s" | format: "france", "spain", "china" }}</samp>
+</p>
+
+<p>
+<b>Empty string:</b> <samp>{{ "%s %s" | format:"", nil }}</samp>
+</p>
+
+<hr/>
+<h2>Other Objects</h2>
+
+<p>
+<b>Nil:</b> <samp>{{ "%p" | format: nil }}</samp>
+</p>
+
+<p>
+<b>Booleans:</b> <samp>{{ "%s %s" | format: true, false }}</samp>
+</p>
+
+<p>
+<b>Ranges:</b> <samp>{{ "%s, %s, %s" | format: (1..2), (6...221), (-1..5) }}</samp>
+</b>
+
+<p>
+<b>Arrays:</b> <samp>{{ "%s" | format: page.array }}</samp>
+</p>
+
+<p>
+<b>Hashes:</b> <samp>{{ "%s" | format: page.dict }}</samp>
+</p>
+
+<small>*Array and hash literals are not supported; but accessing them through Jekyll object like <code>site.data</code> or <code>page</code> is OK.</small>
+
+<hr/>
+
+<h2>
+
+</body>
+</html>
